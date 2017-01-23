@@ -36,7 +36,7 @@ AppModule = __decorate([
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'projects', component: project_list_component_1.ProjectListComponent },
-                { path: 'projects/:id', component: project_detail_component_1.ProjectDetailComponent },
+                { path: 'project/:id', component: project_detail_component_1.ProjectDetailComponent },
             ])
         ],
         declarations: [

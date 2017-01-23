@@ -17,7 +17,6 @@ export class ProjectListComponent implements OnInit {
     errorMessage: string;
 
     constructor(private _projectService: ProjectService) {
-
     }
 
     toggleComplete(): void {

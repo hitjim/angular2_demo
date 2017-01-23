@@ -16,7 +16,14 @@ export class ProjectService {
     getProjects(): Observable<IProject[]> {
         return this._http.get(this._serviceUrl + 'projects')
             .map((response: Response) => <IProject[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .do(data => console.log('Projects: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getProject(id: string): Observable<IProject> {
+        return this._http.get(this._serviceUrl + "project/" + id )
+            .map((response: Response) => <IProject>response.json())
+            .do(data => console.log('Project: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 

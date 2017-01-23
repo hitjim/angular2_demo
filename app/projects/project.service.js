@@ -22,7 +22,13 @@ var ProjectService = (function () {
     ProjectService.prototype.getProjects = function () {
         return this._http.get(this._serviceUrl + 'projects')
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .do(function (data) { return console.log('Projects: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    ProjectService.prototype.getProject = function (id) {
+        return this._http.get(this._serviceUrl + "project/" + id)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('Project: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     ProjectService.prototype.handleError = function (error) {
