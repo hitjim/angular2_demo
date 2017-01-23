@@ -12,8 +12,11 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
+var home_component_1 = require("./home/home.component");
 var project_list_component_1 = require("./projects/project-list.component");
+var project_detail_component_1 = require("./projects/project-detail.component");
 var project_filter_pipe_1 = require("./projects/project-filter.pipe");
 var project_startDate_pipe_1 = require("./projects/project-startDate.pipe");
 var project_endDate_pipe_1 = require("./projects/project-endDate.pipe");
@@ -28,11 +31,19 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            router_1.RouterModule.forRoot([
+                { path: '', redirectTo: 'home', pathMatch: 'full' },
+                { path: 'home', component: home_component_1.HomeComponent },
+                { path: 'projects', component: project_list_component_1.ProjectListComponent },
+                { path: 'projects/:id', component: project_detail_component_1.ProjectDetailComponent },
+            ])
         ],
         declarations: [
             app_component_1.AppComponent,
+            home_component_1.HomeComponent,
             project_list_component_1.ProjectListComponent,
+            project_detail_component_1.ProjectDetailComponent,
             project_filter_pipe_1.ProjectFilterPipe,
             project_startDate_pipe_1.ProjectStartDatePipe,
             project_endDate_pipe_1.ProjectEndDatePipe,
