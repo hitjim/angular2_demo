@@ -1,0 +1,56 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text'
+                    [(ngModel)] = 'listFilter' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}}</h3>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <button class='btn btn-primary'
+                    (click)='toggleComplete()'>
+                    {{showComplete ? 'Hide' : 'Show'}} Completed Projects
+                </button>
+            </div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table' *ngIf='projects && projects.length'>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Customer</th>
+                        <th>Hours Invested</th>
+                        <th>Start</th>
+                        <th>End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let project of projects | projectFilter:listFilter'>
+                        <td>
+                            <button class='btn btn-primary'
+                                (click)='toggleComplete()'>
+                                View/Edit
+                            </button>
+                        </td>
+                        <td>{{project.project_name}}</td>
+                        <td>{{project.customer_name}}</td>
+                        <td>{{project.hours | hours}}
+                        <td>{{project.start_date | startDate}}</td>
+                        <td>{{project.end_date | endDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
