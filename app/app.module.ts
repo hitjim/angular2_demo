@@ -24,8 +24,7 @@ import { ProjectHoursPipe }  from './projects/project-hours.pipe';
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
       { path: 'projects', component: ProjectListComponent},
-      { path: 'project/:id', component: ProjectDetailComponent},
-    ])
+      { path: 'project/:id', component: ProjectDetailComponent}])
     ],
   declarations: [ 
     AppComponent,
