@@ -34,4 +34,10 @@ export class ProjectDetailComponent implements OnInit {
         this._router.navigate(['/projects']);
     }
 
+    saveProject() {
+        this._projectService.saveProject(this.project)
+            .subscribe(project => this.project = project,
+                error => this.errorMessage = <any>error);
+    }
+
 }

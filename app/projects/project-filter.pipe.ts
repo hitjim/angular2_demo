@@ -15,16 +15,4 @@ export class ProjectFilterPipe implements PipeTransform {
         return filterBy ? value.filter((project: IProject) => 
             project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1) : value;
     }
-
-    formatStartDate(value: Date): string {
-        var ret: string;
-        if (value === null) return 'Not Started';
-        return datePipe.transform(value);
-    }
-
-     formatEndDate(value: Date): string {
-        var ret: string;
-        if (value === null) return 'Not Completed';
-        return datePipe.transform(value);
-    }
 }

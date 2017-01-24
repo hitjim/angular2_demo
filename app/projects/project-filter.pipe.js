@@ -20,18 +20,6 @@ var ProjectFilterPipe = (function () {
             return project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1;
         }) : value;
     };
-    ProjectFilterPipe.prototype.formatStartDate = function (value) {
-        var ret;
-        if (value === null)
-            return 'Not Started';
-        return datePipe.transform(value);
-    };
-    ProjectFilterPipe.prototype.formatEndDate = function (value) {
-        var ret;
-        if (value === null)
-            return 'Not Completed';
-        return datePipe.transform(value);
-    };
     return ProjectFilterPipe;
 }());
 ProjectFilterPipe = __decorate([

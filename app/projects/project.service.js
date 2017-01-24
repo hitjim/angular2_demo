@@ -31,6 +31,14 @@ var ProjectService = (function () {
             .do(function (data) { return console.log('Project: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
+    ProjectService.prototype.saveProject = function (project) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(this._serviceUrl + "project", JSON.stringify(project), options)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('Project: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
     ProjectService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw('Error');

@@ -28,6 +28,11 @@ var ProjectDetailComponent = (function () {
     ProjectDetailComponent.prototype.onBack = function () {
         this._router.navigate(['/projects']);
     };
+    ProjectDetailComponent.prototype.saveProject = function () {
+        var _this = this;
+        this._projectService.saveProject(this.project)
+            .subscribe(function (project) { return _this.project = project; }, function (error) { return _this.errorMessage = error; });
+    };
     return ProjectDetailComponent;
 }());
 ProjectDetailComponent = __decorate([

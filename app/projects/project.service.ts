@@ -1,4 +1,4 @@
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -22,6 +22,17 @@ export class ProjectService {
 
     getProject(id: string): Observable<IProject> {
         return this._http.get(this._serviceUrl + "project/" + id )
+            .map((response: Response) => <IProject>response.json())
+            .do(data => console.log('Project: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    saveProject(project: IProject): Observable<IProject> {
+        
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.post(this._serviceUrl + "project", JSON.stringify(project), options)
             .map((response: Response) => <IProject>response.json())
             .do(data => console.log('Project: ' + JSON.stringify(data)))
             .catch(this.handleError);
