@@ -10,6 +10,8 @@ export class ProjectStartDatePipe implements PipeTransform {
 
     transform(value: Date): string {
         if (value === null) return 'Not Started';
-        return datePipe.transform(value);
+        let date = new Date(value);
+        date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+        return date.toLocaleDateString();
     }
 }

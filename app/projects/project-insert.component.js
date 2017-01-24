@@ -17,26 +17,31 @@ var ProjectInsertComponent = (function () {
         this._route = _route;
         this._projectService = _projectService;
         this._router = _router;
-        this.pageTitle = 'Project Detail';
+        this.pageTitle = 'Insert Project';
+        this.project = this.createNewProject();
     }
-    ProjectInsertComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this._route.snapshot.params['id'] != null) {
-            this._projectService.getProject(this._route.snapshot.params['id'])
-                .subscribe(function (project) { return _this.project = project; }, function (error) { return _this.errorMessage = error; });
-        }
-    };
     ProjectInsertComponent.prototype.onBack = function () {
         this._router.navigate(['/projects']);
     };
-    ProjectInsertComponent.prototype.saveProject = function () {
+    ProjectInsertComponent.prototype.onSave = function () {
         var _this = this;
-        this._projectService.saveProject(this.project)
+        this._projectService.insertProject(this.project)
             .subscribe(function (result) { return _this.processSaveResult(result); }, function (error) { return _this.errorMessage = error; });
     };
     ProjectInsertComponent.prototype.processSaveResult = function (result) {
         console.log(result);
         this._router.navigate(['/projects']);
+    };
+    ProjectInsertComponent.prototype.createNewProject = function () {
+        return {
+            "_id": null,
+            "project_name": null,
+            "customer_name": null,
+            "start_date": null,
+            "end_date": null,
+            "details": null,
+            "hours": []
+        };
     };
     return ProjectInsertComponent;
 }());
@@ -50,4 +55,4 @@ ProjectInsertComponent = __decorate([
         router_2.Router])
 ], ProjectInsertComponent);
 exports.ProjectInsertComponent = ProjectInsertComponent;
-//# sourceMappingURL=project-detail.component.js.map
+//# sourceMappingURL=project-insert.component.js.map

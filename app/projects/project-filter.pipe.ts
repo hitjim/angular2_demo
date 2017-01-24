@@ -10,9 +10,13 @@ const datePipe = new DatePipe('en-US');
 })
 export class ProjectFilterPipe implements PipeTransform {
 
-    transform(value: IProject[], filterBy: string): IProject[] {
+    transform(value: IProject[], filterBy: string, showComplete: boolean): IProject[] {
         filterBy = filterBy ? filterBy.toLowerCase() : null;
-        return filterBy ? value.filter((project: IProject) => 
+
+        let returnVal = filterBy ? value.filter((project: IProject) => 
             project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1) : value;
+console.log(showComplete);
+        return showComplete ? returnVal : returnVal.filter((project: IProject) => 
+            project.end_date === null);
     }
 }

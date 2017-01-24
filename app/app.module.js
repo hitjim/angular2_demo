@@ -16,11 +16,14 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var project_list_component_1 = require("./projects/project-list.component");
-var project_detail_component_1 = require("./projects/project-detail.component");
+var project_insert_component_1 = require("./projects/project-insert.component");
+var project_update_component_1 = require("./projects/project-update.component");
+var project_hours_list_component_1 = require("./projects/hours/project-hours-list.component");
+var project_hours_insert_component_1 = require("./projects/hours/project-hours-insert.component");
 var project_filter_pipe_1 = require("./projects/project-filter.pipe");
 var project_startDate_pipe_1 = require("./projects/project-startDate.pipe");
 var project_endDate_pipe_1 = require("./projects/project-endDate.pipe");
-var project_hours_pipe_1 = require("./projects/project-hours.pipe");
+var project_hours_pipe_1 = require("./projects/hours/project-hours.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,17 +39,22 @@ AppModule = __decorate([
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'projects', component: project_list_component_1.ProjectListComponent },
-                { path: 'project/:id', component: project_detail_component_1.ProjectDetailComponent }
+                { path: 'project/update/:id', component: project_update_component_1.ProjectUpdateComponent },
+                { path: 'project/insert', component: project_insert_component_1.ProjectInsertComponent },
+                { path: 'project/hours/insert/:id', component: project_hours_insert_component_1.ProjectHoursInsertComponent }
             ])
         ],
         declarations: [
             app_component_1.AppComponent,
             home_component_1.HomeComponent,
             project_list_component_1.ProjectListComponent,
-            project_detail_component_1.ProjectDetailComponent,
+            project_insert_component_1.ProjectInsertComponent,
+            project_update_component_1.ProjectUpdateComponent,
+            project_hours_list_component_1.ProjectHoursListComponent,
+            project_hours_insert_component_1.ProjectHoursInsertComponent,
             project_filter_pipe_1.ProjectFilterPipe,
-            project_startDate_pipe_1.ProjectStartDatePipe,
             project_endDate_pipe_1.ProjectEndDatePipe,
+            project_startDate_pipe_1.ProjectStartDatePipe,
             project_hours_pipe_1.ProjectHoursPipe
         ],
         bootstrap: [app_component_1.AppComponent]

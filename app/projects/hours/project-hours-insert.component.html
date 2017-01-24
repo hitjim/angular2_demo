@@ -1,0 +1,24 @@
+<div class='panel panel-primary' *ngIf="project">
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body' *ngIf='project.hours'>
+        <p class="text-left text-danger bg-danger">{{errorMessage}}</p>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="form-group">
+                    <label>Hours</label>
+                    <input class="form-control input-lg" type="number" [(ngModel)] = 'projectHour.hours'/>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control input-lg" type="text" [(ngModel)] = 'projectHour.description'/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='panel-footer'>
+        <button class='btn btn-primary' (click)='onSave()'>Save</button>
+        <button class='btn btn-default' (click)='onBack()'>Back</button>
+    </div>
+</div>

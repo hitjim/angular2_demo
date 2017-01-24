@@ -5,7 +5,7 @@
     <div class='panel-body'>
         <div class='row'>
             <div class='col-md-6'>
-                <button class='btn btn-primary'>
+                <button class='btn btn-primary' [routerLink]="['/project/insert']">
                     +
                 </button>
                 <button class='btn btn-default'
@@ -30,13 +30,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let project of projects | projectFilter:listFilter'>
+                    <tr *ngFor='let project of projects | projectFilter:listFilter:showComplete'>
                         <td>
-                            <button class='btn btn-primary' [routerLink]="['/project', project._id]">View/Edit</button>
+                            <button class='btn btn-primary' [routerLink]="['/project/update', project._id]">View/Edit</button>
                         </td>
                         <td>{{project.project_name}}</td>
                         <td>{{project.customer_name}}</td>
-                        <td>{{project.hours | hours}}
+                        <td>{{project.hours | hours | number}}
                         <td>{{project.start_date | startDate}}</td>
                         <td>{{project.end_date | endDate}}</td>
                     </tr>

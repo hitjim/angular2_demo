@@ -9,25 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var datePipe = new common_1.DatePipe('en-US');
-var ProjectEndDatePipe = (function () {
-    function ProjectEndDatePipe() {
+var ProjectHoursListComponent = (function () {
+    function ProjectHoursListComponent() {
     }
-    ProjectEndDatePipe.prototype.transform = function (value) {
-        if (value === null)
-            return 'Not Completed';
-        var date = new Date(value);
-        date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-        return date.toLocaleDateString();
-    };
-    return ProjectEndDatePipe;
+    return ProjectHoursListComponent;
 }());
-ProjectEndDatePipe = __decorate([
-    core_1.Pipe({
-        name: 'endDate'
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], ProjectHoursListComponent.prototype, "project", void 0);
+ProjectHoursListComponent = __decorate([
+    core_1.Component({
+        selector: 'pm-project-hours-list',
+        templateUrl: 'app/projects/hours/project-hours-list.component.html'
     }),
     __metadata("design:paramtypes", [])
-], ProjectEndDatePipe);
-exports.ProjectEndDatePipe = ProjectEndDatePipe;
-//# sourceMappingURL=project-endDate.pipe.js.map
+], ProjectHoursListComponent);
+exports.ProjectHoursListComponent = ProjectHoursListComponent;
+//# sourceMappingURL=project-hours-list.component.js.map

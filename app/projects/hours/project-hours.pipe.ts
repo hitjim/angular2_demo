@@ -8,7 +8,7 @@ import {IProjectHour} from './project-hour'
 export class ProjectHoursPipe implements PipeTransform {
 
     transform(value: IProjectHour[]): number {
-        var total: number = 0;
+        let total: number = 0;
         value.forEach(hour => {
             total += hour.hours;
         });

@@ -10,9 +10,9 @@ import { ProjectService } from './project.service';
     templateUrl:'app/projects/project-detail.component.html',
     providers: [ProjectService]
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectUpdateComponent implements OnInit {
 
-    pageTitle: string = 'Project Detail';
+    pageTitle: string = 'Update Project';
     project: IProject;
     errorMessage: string;
 
@@ -23,9 +23,7 @@ export class ProjectDetailComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let id = this._route.snapshot.params['id'];
-
-        this._projectService.getProject(id)
+        this._projectService.getProject(this._route.snapshot.params['id'])
             .subscribe(project => this.project = project,
                 error => this.errorMessage = <any>error);
     }
@@ -34,10 +32,20 @@ export class ProjectDetailComponent implements OnInit {
         this._router.navigate(['/projects']);
     }
 
-    saveProject() {
-        this._projectService.saveProject(this.project)
-            .subscribe(project => this.project = project,
+    onSave() {
+        this.errorMessage = "";
+        this._projectService.updateProject(this.project)
+            .subscribe(result => this.processSaveResult(result),
                 error => this.errorMessage = <any>error);
+    }
+
+    processSaveResult(result: any) {
+        if (result.status === 'success') {
+            this._router.navigate(['/projects']);
+        }
+        else {
+            this.errorMessage = "There was an error."
+        }
     }
 
 }

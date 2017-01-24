@@ -9,25 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var datePipe = new common_1.DatePipe('en-US');
-var ProjectEndDatePipe = (function () {
-    function ProjectEndDatePipe() {
+var ProjectHoursPipe = (function () {
+    function ProjectHoursPipe() {
     }
-    ProjectEndDatePipe.prototype.transform = function (value) {
-        if (value === null)
-            return 'Not Completed';
-        var date = new Date(value);
-        date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-        return date.toLocaleDateString();
+    ProjectHoursPipe.prototype.transform = function (value) {
+        var total = 0;
+        value.forEach(function (hour) {
+            total += hour.hours;
+        });
+        return total;
     };
-    return ProjectEndDatePipe;
+    return ProjectHoursPipe;
 }());
-ProjectEndDatePipe = __decorate([
+ProjectHoursPipe = __decorate([
     core_1.Pipe({
-        name: 'endDate'
+        name: 'hours'
     }),
     __metadata("design:paramtypes", [])
-], ProjectEndDatePipe);
-exports.ProjectEndDatePipe = ProjectEndDatePipe;
-//# sourceMappingURL=project-endDate.pipe.js.map
+], ProjectHoursPipe);
+exports.ProjectHoursPipe = ProjectHoursPipe;
+//# sourceMappingURL=project-hours.pipe.js.map

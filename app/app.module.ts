@@ -9,11 +9,14 @@ import { AppComponent }  from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { ProjectListComponent }  from './projects/project-list.component';
-import { ProjectDetailComponent }  from './projects/project-detail.component';
+import { ProjectInsertComponent }  from './projects/project-insert.component';
+import { ProjectUpdateComponent }  from './projects/project-update.component';
+import { ProjectHoursListComponent }  from './projects/hours/project-hours-list.component';
+import { ProjectHoursInsertComponent }  from './projects/hours/project-hours-insert.component';
 import { ProjectFilterPipe }  from './projects/project-filter.pipe';
 import { ProjectStartDatePipe }  from './projects/project-startDate.pipe';
 import { ProjectEndDatePipe }  from './projects/project-endDate.pipe';
-import { ProjectHoursPipe }  from './projects/project-hours.pipe';
+import { ProjectHoursPipe }  from './projects/hours/project-hours.pipe';
 
 @NgModule({
   imports: [ 
@@ -24,7 +27,9 @@ import { ProjectHoursPipe }  from './projects/project-hours.pipe';
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
       { path: 'projects', component: ProjectListComponent},
-      { path: 'project/:id', component: ProjectDetailComponent}])
+      { path: 'project/update/:id', component: ProjectUpdateComponent},
+      { path: 'project/insert', component: ProjectInsertComponent},
+      { path: 'project/hours/insert/:id', component: ProjectHoursInsertComponent}])
     ],
   declarations: [ 
     AppComponent,
@@ -32,10 +37,13 @@ import { ProjectHoursPipe }  from './projects/project-hours.pipe';
     HomeComponent,
 
     ProjectListComponent, 
-    ProjectDetailComponent,
+    ProjectInsertComponent,
+    ProjectUpdateComponent,
+    ProjectHoursListComponent,
+    ProjectHoursInsertComponent,
     ProjectFilterPipe,
-    ProjectStartDatePipe,
     ProjectEndDatePipe,
+    ProjectStartDatePipe,
     ProjectHoursPipe
     ],
   bootstrap: [ AppComponent ]

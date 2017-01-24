@@ -50,4 +50,4 @@ ProjectInsertComponent = __decorate([
         router_2.Router])
 ], ProjectInsertComponent);
 exports.ProjectInsertComponent = ProjectInsertComponent;
-//# sourceMappingURL=project-detail.component.js.map
+//# sourceMappingURL=project-insert.component.1.js.map

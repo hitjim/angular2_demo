@@ -17,7 +17,9 @@ var ProjectStartDatePipe = (function () {
     ProjectStartDatePipe.prototype.transform = function (value) {
         if (value === null)
             return 'Not Started';
-        return datePipe.transform(value);
+        var date = new Date(value);
+        date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+        return date.toLocaleDateString();
     };
     return ProjectStartDatePipe;
 }());

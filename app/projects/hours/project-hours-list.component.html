@@ -1,0 +1,22 @@
+<div class='row'>
+    <div class='col-md-6'> 
+        <label>{{project.hours | hours | number}} Hours Invested</label>
+        <button class='btn btn-primary' [routerLink]="['/project/hours/insert', project._id]">+</button>
+    </div>
+</div>
+<div class='table-responsive'>
+    <table class='table' *ngIf='project.hours.length !== 0'>
+        <thead>
+            <tr>
+                <th>Hours</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let hour of project.hours'>
+                <td>{{hour.hours | number}}</td>
+                <td>{{hour.description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

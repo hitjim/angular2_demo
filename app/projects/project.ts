@@ -1,4 +1,4 @@
-import { IProjectHour } from './project-hour'
+import { IProjectHour } from './hours/project-hour'
 
 export interface IProject {
     _id: string;

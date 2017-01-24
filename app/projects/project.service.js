@@ -22,21 +22,29 @@ var ProjectService = (function () {
     ProjectService.prototype.getProjects = function () {
         return this._http.get(this._serviceUrl + 'projects')
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('Projects: ' + JSON.stringify(data)); })
+            .do(function (data) { return console.log('List Projects: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     ProjectService.prototype.getProject = function (id) {
         return this._http.get(this._serviceUrl + "project/" + id)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('Project: ' + JSON.stringify(data)); })
+            .do(function (data) { return console.log('Get Project: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    ProjectService.prototype.saveProject = function (project) {
+    ProjectService.prototype.insertProject = function (project) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this._http.post(this._serviceUrl + "project", JSON.stringify(project), options)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('Project: ' + JSON.stringify(data)); })
+            .do(function (data) { return console.log('Insert Project: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    ProjectService.prototype.updateProject = function (project) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(this._serviceUrl + "project", project, options)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('Update Project: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     ProjectService.prototype.handleError = function (error) {

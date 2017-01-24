@@ -16,26 +16,37 @@ export class ProjectService {
     getProjects(): Observable<IProject[]> {
         return this._http.get(this._serviceUrl + 'projects')
             .map((response: Response) => <IProject[]>response.json())
-            .do(data => console.log('Projects: ' + JSON.stringify(data)))
+            .do(data => console.log('List Projects: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     getProject(id: string): Observable<IProject> {
         return this._http.get(this._serviceUrl + "project/" + id )
             .map((response: Response) => <IProject>response.json())
-            .do(data => console.log('Project: ' + JSON.stringify(data)))
+            .do(data => console.log('Get Project: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    saveProject(project: IProject): Observable<IProject> {
+    insertProject(project: IProject): Observable<boolean> {
         
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
         return this._http.post(this._serviceUrl + "project", JSON.stringify(project), options)
-            .map((response: Response) => <IProject>response.json())
-            .do(data => console.log('Project: ' + JSON.stringify(data)))
+            .map((response: Response) => response.json())
+            .do(data => console.log('Insert Project: ' + JSON.stringify(data)))
             .catch(this.handleError);
+    }
+
+    updateProject(project: IProject): Observable<boolean> {
+    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.put(this._serviceUrl + "project", project, options)
+        .map((response: Response) => response.json())
+        .do(data => console.log('Update Project: ' + JSON.stringify(data)))
+        .catch(this.handleError);
     }
 
     private handleError(error: Response) {

@@ -14,11 +14,15 @@ var datePipe = new common_1.DatePipe('en-US');
 var ProjectFilterPipe = (function () {
     function ProjectFilterPipe() {
     }
-    ProjectFilterPipe.prototype.transform = function (value, filterBy) {
+    ProjectFilterPipe.prototype.transform = function (value, filterBy, showComplete) {
         filterBy = filterBy ? filterBy.toLowerCase() : null;
-        return filterBy ? value.filter(function (project) {
+        var returnVal = filterBy ? value.filter(function (project) {
             return project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1;
         }) : value;
+        console.log(showComplete);
+        return showComplete ? returnVal : returnVal.filter(function (project) {
+            return project.end_date === null;
+        });
     };
     return ProjectFilterPipe;
 }());

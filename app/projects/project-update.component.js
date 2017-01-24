@@ -12,35 +12,38 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var project_service_1 = require("./project.service");
-var ProjectInsertComponent = (function () {
-    function ProjectInsertComponent(_route, _projectService, _router) {
+var ProjectUpdateComponent = (function () {
+    function ProjectUpdateComponent(_route, _projectService, _router) {
         this._route = _route;
         this._projectService = _projectService;
         this._router = _router;
-        this.pageTitle = 'Project Detail';
+        this.pageTitle = 'Update Project';
     }
-    ProjectInsertComponent.prototype.ngOnInit = function () {
+    ProjectUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
-        if (this._route.snapshot.params['id'] != null) {
-            this._projectService.getProject(this._route.snapshot.params['id'])
-                .subscribe(function (project) { return _this.project = project; }, function (error) { return _this.errorMessage = error; });
-        }
+        this._projectService.getProject(this._route.snapshot.params['id'])
+            .subscribe(function (project) { return _this.project = project; }, function (error) { return _this.errorMessage = error; });
     };
-    ProjectInsertComponent.prototype.onBack = function () {
+    ProjectUpdateComponent.prototype.onBack = function () {
         this._router.navigate(['/projects']);
     };
-    ProjectInsertComponent.prototype.saveProject = function () {
+    ProjectUpdateComponent.prototype.onSave = function () {
         var _this = this;
-        this._projectService.saveProject(this.project)
+        this.errorMessage = "";
+        this._projectService.updateProject(this.project)
             .subscribe(function (result) { return _this.processSaveResult(result); }, function (error) { return _this.errorMessage = error; });
     };
-    ProjectInsertComponent.prototype.processSaveResult = function (result) {
-        console.log(result);
-        this._router.navigate(['/projects']);
+    ProjectUpdateComponent.prototype.processSaveResult = function (result) {
+        if (result.status === 'success') {
+            this._router.navigate(['/projects']);
+        }
+        else {
+            this.errorMessage = "There was an error.";
+        }
     };
-    return ProjectInsertComponent;
+    return ProjectUpdateComponent;
 }());
-ProjectInsertComponent = __decorate([
+ProjectUpdateComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/projects/project-detail.component.html',
         providers: [project_service_1.ProjectService]
@@ -48,6 +51,6 @@ ProjectInsertComponent = __decorate([
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         project_service_1.ProjectService,
         router_2.Router])
-], ProjectInsertComponent);
-exports.ProjectInsertComponent = ProjectInsertComponent;
-//# sourceMappingURL=project-detail.component.js.map
+], ProjectUpdateComponent);
+exports.ProjectUpdateComponent = ProjectUpdateComponent;
+//# sourceMappingURL=project-update.component.js.map
