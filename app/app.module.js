@@ -24,6 +24,7 @@ var project_filter_pipe_1 = require("./projects/project-filter.pipe");
 var project_startDate_pipe_1 = require("./projects/project-startDate.pipe");
 var project_endDate_pipe_1 = require("./projects/project-endDate.pipe");
 var project_hours_pipe_1 = require("./projects/hours/project-hours.pipe");
+var orderBy_pipe_1 = require("./shared/orderBy.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,7 +56,8 @@ AppModule = __decorate([
             project_filter_pipe_1.ProjectFilterPipe,
             project_endDate_pipe_1.ProjectEndDatePipe,
             project_startDate_pipe_1.ProjectStartDatePipe,
-            project_hours_pipe_1.ProjectHoursPipe
+            project_hours_pipe_1.ProjectHoursPipe,
+            orderBy_pipe_1.OrderByPipe
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

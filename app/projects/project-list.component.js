@@ -16,10 +16,22 @@ var ProjectListComponent = (function () {
         this.pageTitle = 'Projects';
         this.showComplete = false;
         this.listFilter = '';
+        this.orderBy = 'project_name';
+        this.orderDesc = false;
     }
     ;
     ProjectListComponent.prototype.toggleComplete = function () {
         this.showComplete = !this.showComplete;
+    };
+    ProjectListComponent.prototype.onOrderBy = function (field) {
+        console.log(this.orderBy + " " + this.orderDesc);
+        if (this.orderBy === field) {
+            this.orderBy = field;
+            this.orderDesc = !this.orderDesc;
+            return;
+        }
+        this.orderBy = field;
+        this.orderDesc = false;
     };
     ProjectListComponent.prototype.ngOnInit = function () {
         var _this = this;

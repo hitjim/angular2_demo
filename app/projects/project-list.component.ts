@@ -13,6 +13,8 @@ export class ProjectListComponent implements OnInit {
     pageTitle: string = 'Projects';
     showComplete: boolean = false;
     listFilter: string = '';
+    orderBy: string = 'project_name';
+    orderDesc: boolean = false;
     projects: IProject[];;
     errorMessage: string;
 
@@ -21,6 +23,17 @@ export class ProjectListComponent implements OnInit {
 
     toggleComplete(): void {
         this.showComplete = !this.showComplete;
+    }
+
+    onOrderBy(field: string): void {
+        console.log(this.orderBy + " " + this.orderDesc);
+        if (this.orderBy === field) {
+            this.orderBy = field;
+            this.orderDesc = !this.orderDesc;
+            return;
+        }
+        this.orderBy = field;
+        this.orderDesc = false;
     }
 
     ngOnInit(): void {

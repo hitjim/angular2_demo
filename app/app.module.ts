@@ -18,6 +18,8 @@ import { ProjectStartDatePipe }  from './projects/project-startDate.pipe';
 import { ProjectEndDatePipe }  from './projects/project-endDate.pipe';
 import { ProjectHoursPipe }  from './projects/hours/project-hours.pipe';
 
+import { OrderByPipe } from './shared/orderBy.pipe';
+
 @NgModule({
   imports: [ 
     BrowserModule,
@@ -44,7 +46,9 @@ import { ProjectHoursPipe }  from './projects/hours/project-hours.pipe';
     ProjectFilterPipe,
     ProjectEndDatePipe,
     ProjectStartDatePipe,
-    ProjectHoursPipe
+    ProjectHoursPipe,
+
+    OrderByPipe
     ],
   bootstrap: [ AppComponent ]
 })

@@ -22,15 +22,15 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>Customer</th>
-                        <th>Hours Invested</th>
-                        <th>Start</th>
-                        <th>End</th>
+                        <th><a (click)='onOrderBy("project_name")'>Name{{orderBy === 'project_name' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
+                        <th><a (click)='onOrderBy("customer_name")'>Customer{{orderBy === 'customer_name' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
+                        <th><a (click)='onOrderBy("hours")'>Hours Invested{{orderBy === 'hours' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
+                        <th><a (click)='onOrderBy("start_date")'>Started{{orderBy === 'start_date' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
+                        <th><a (click)='onOrderBy("end_date")'>Ended{{orderBy === 'end_date' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let project of projects | projectFilter:listFilter:showComplete'>
+                    <tr *ngFor='let project of projects | projectFilter:listFilter:showComplete | orderBy:orderBy:orderDesc'>
                         <td>
                             <button class='btn btn-primary' [routerLink]="['/project/update', project._id]">View/Edit</button>
                         </td>
