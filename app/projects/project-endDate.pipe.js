@@ -15,7 +15,7 @@ var ProjectEndDatePipe = (function () {
     function ProjectEndDatePipe() {
     }
     ProjectEndDatePipe.prototype.transform = function (value) {
-        if (value === null)
+        if (value === null || value === "")
             return 'Not Completed';
         var date = new Date(value);
         date.setMinutes(date.getMinutes() + date.getTimezoneOffset());

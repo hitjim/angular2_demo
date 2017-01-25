@@ -9,25 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var ProjectFilterPipe = (function () {
-    function ProjectFilterPipe() {
+var SortPipe = (function () {
+    function SortPipe() {
     }
-    ProjectFilterPipe.prototype.transform = function (value, filterBy, showComplete) {
-        filterBy = filterBy ? filterBy.toLowerCase() : null;
-        var returnVal = filterBy ? value.filter(function (project) {
-            return project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1;
-        }) : value;
-        return showComplete ? returnVal : returnVal.filter(function (project) {
-            return project.end_date === null;
+    SortPipe.prototype.transform = function (array, orderField, orderType) {
+        console.log(orderField);
+        console.log(JSON.stringify(array));
+        console.log(orderType);
+        array.sort(function (a, b) {
+            if (a[orderField] == null || a[orderField].isUndefined)
+                return orderType ? 0 - b[orderField] : b[orderField] - 0;
+            if (b[orderField] == null || b[orderField].isUndefined)
+                return orderType ? a[orderField] - 0 : b[orderField] - 0;
+            return orderType ? a[orderField] - b[orderField] : b[orderField] - a[orderField];
         });
+        return array;
     };
-    return ProjectFilterPipe;
+    return SortPipe;
 }());
-ProjectFilterPipe = __decorate([
+SortPipe = __decorate([
     core_1.Pipe({
-        name: 'projectFilter'
+        name: 'sort'
     }),
     __metadata("design:paramtypes", [])
-], ProjectFilterPipe);
-exports.ProjectFilterPipe = ProjectFilterPipe;
-//# sourceMappingURL=project-filter.pipe.js.map
+], SortPipe);
+exports.SortPipe = SortPipe;
+//# sourceMappingURL=sort.pipe.js.map

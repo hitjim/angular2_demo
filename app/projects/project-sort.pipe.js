@@ -12,22 +12,23 @@ var core_1 = require("@angular/core");
 var ProjectFilterPipe = (function () {
     function ProjectFilterPipe() {
     }
-    ProjectFilterPipe.prototype.transform = function (value, filterBy, showComplete) {
-        filterBy = filterBy ? filterBy.toLowerCase() : null;
-        var returnVal = filterBy ? value.filter(function (project) {
-            return project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1;
-        }) : value;
-        return showComplete ? returnVal : returnVal.filter(function (project) {
-            return project.end_date === null;
+    ProjectFilterPipe.prototype.transform = function (array, orderField, orderType) {
+        array.sort(function (a, b) {
+            if (a[orderField] == null || a[orderField].isUndefined)
+                return orderType ? 0 - b[orderField] : b[orderField] - 0;
+            if (b[orderField] == null || b[orderField].isUndefined)
+                return orderType ? a[orderField] - 0 : b[orderField] - 0;
+            return orderType ? a[orderField] - b[orderField] : b[orderField] - a[orderField];
         });
+        return array;
     };
     return ProjectFilterPipe;
 }());
 ProjectFilterPipe = __decorate([
     core_1.Pipe({
-        name: 'projectFilter'
+        name: 'projectSort'
     }),
     __metadata("design:paramtypes", [])
 ], ProjectFilterPipe);
 exports.ProjectFilterPipe = ProjectFilterPipe;
-//# sourceMappingURL=project-filter.pipe.js.map
+//# sourceMappingURL=project-sort.pipe.js.map

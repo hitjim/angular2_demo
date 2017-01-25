@@ -9,6 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var datePipe = new common_1.DatePipe('en-US');
 var ProjectFilterPipe = (function () {
     function ProjectFilterPipe() {
     }
@@ -17,6 +19,7 @@ var ProjectFilterPipe = (function () {
         var returnVal = filterBy ? value.filter(function (project) {
             return project.project_name.toLocaleLowerCase().indexOf(filterBy) !== -1;
         }) : value;
+        console.log(showComplete);
         return showComplete ? returnVal : returnVal.filter(function (project) {
             return project.end_date === null;
         });
@@ -30,4 +33,4 @@ ProjectFilterPipe = __decorate([
     __metadata("design:paramtypes", [])
 ], ProjectFilterPipe);
 exports.ProjectFilterPipe = ProjectFilterPipe;
-//# sourceMappingURL=project-filter.pipe.js.map
+//# sourceMappingURL=project-filter.pipe.1.js.map

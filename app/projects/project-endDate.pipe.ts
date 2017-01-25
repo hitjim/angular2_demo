@@ -9,7 +9,7 @@ const datePipe = new DatePipe('en-US');
 export class ProjectEndDatePipe implements PipeTransform {
 
     transform(value: Date): string {
-        if (value === null) return 'Not Completed';
+        if (value === null || value === <any>"") return 'Not Completed';
         let date = new Date(value);
         date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
         return date.toLocaleDateString();
