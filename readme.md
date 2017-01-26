@@ -1,4 +1,4 @@
-# demo_service
+# Angular 2 Project Management app for DevICT Presentation
 This is a demo app written in Angular2 for Presentation at DevICT.
 I started with a demo application by @deborahkurata from a PluralSight course - www.bit.ly/DeborahKsBlog
 
