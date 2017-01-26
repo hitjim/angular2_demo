@@ -19,7 +19,6 @@ var ProjectListComponent = (function () {
         this.orderBy = 'project_name';
         this.orderDesc = false;
     }
-    ;
     ProjectListComponent.prototype.toggleComplete = function () {
         this.showComplete = !this.showComplete;
     };

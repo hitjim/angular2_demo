@@ -15,7 +15,7 @@ export class ProjectListComponent implements OnInit {
     listFilter: string = '';
     orderBy: string = 'project_name';
     orderDesc: boolean = false;
-    projects: IProject[];;
+    projects: IProject[];
     errorMessage: string;
 
     constructor(private _projectService: ProjectService) {

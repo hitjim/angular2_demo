@@ -45,7 +45,7 @@ export class ProjectInsertComponent {
             "start_date": null,
             "end_date": null,
             "details": null,
-            "hours": [] 
+            "hours": []
         }
     }
 }
