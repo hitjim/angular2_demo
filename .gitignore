@@ -1,0 +1,10 @@
+# directories
+node_modules
+typings
+
+# logs
+npm-debug.log
+
+# transpilation things
+app/**/*.js
+app/**/*.map

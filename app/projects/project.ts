@@ -7,5 +7,7 @@ export interface IProject {
     start_date: Date;
     end_date: Date;
     details: string;
-    hours: IProjectHour[]
+    hours: IProjectHour[];
+    customer_phone: string;
+    customer_email: string;
 }
