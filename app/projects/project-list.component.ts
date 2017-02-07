@@ -36,6 +36,13 @@ export class ProjectListComponent implements OnInit {
         this.orderDesc = false;
     }
 
+    handleDelete(project: IProject): void {
+        if (confirm(project._id)) {
+            this._projectService.deleteProject(project);
+        };
+
+    }
+
     ngOnInit(): void {
         this._projectService.getProjects()
             .subscribe(projects => this.projects = projects,

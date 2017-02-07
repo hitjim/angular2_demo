@@ -39,14 +39,29 @@ export class ProjectService {
     }
 
     updateProject(project: IProject): Observable<boolean> {
-    
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
 
-    return this._http.put(this._serviceUrl + "project", project, options)
-        .map((response: Response) => response.json())
-        .do(data => console.log('Update Project: ' + JSON.stringify(data)))
-        .catch(this.handleError);
+        return this._http.put(this._serviceUrl + "project", project, options)
+            .map((response: Response) => response.json())
+            .do(data => console.log('Update Project: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    deleteProject(project: IProject): Observable<boolean> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.delete(this._serviceUrl + "project/" + project._id, options)
+            .map((response: Response) => {
+                return response.json();
+            })
+            .do((data) => {
+                console.log('Delete Project: ' + JSON.stringify(data))
+            })
+            .catch((err: any) => {
+                return this.handleError(err);
+            });
     }
 
     private handleError(error: Response) {

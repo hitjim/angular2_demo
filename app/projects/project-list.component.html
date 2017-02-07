@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                         <th></th>
+                        <th></th>
                         <th><a (click)='onOrderBy("project_name")'>Name{{orderBy === 'project_name' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
                         <th><a (click)='onOrderBy("customer_name")'>Customer{{orderBy === 'customer_name' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
                         <th><a (click)='onOrderBy("hours")'>Hours Invested{{orderBy === 'hours' ? orderDesc ? '▼' : '▲' : ''}}</a></th>
@@ -33,6 +34,9 @@
                     <tr *ngFor='let project of projects | projectFilter:listFilter:showComplete | orderBy:orderBy:orderDesc'>
                         <td>
                             <button class='btn btn-primary' [routerLink]="['/project/update', project._id]">View/Edit</button>
+                        </td>
+                        <td>
+                            <button class='btn btn-primary' (click)='handleDelete(project)'>Delete</button>
                         </td>
                         <td>{{project.project_name}}</td>
                         <td>{{project.customer_name}}</td>
