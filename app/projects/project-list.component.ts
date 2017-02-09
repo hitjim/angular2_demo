@@ -37,9 +37,12 @@ export class ProjectListComponent implements OnInit {
     }
 
     handleDelete(project: IProject): void {
-        if (confirm(project._id)) {
-            this._projectService.deleteProject(project);
-        };
+        if (confirm("Are you sure you want to delete project with ID: " + project._id)) {
+            this._projectService.deleteProject(project)
+                .subscribe(
+                    response => console.log(response),
+                    error => this.errorMessage = <any>error);
+        }
 
     }
 
