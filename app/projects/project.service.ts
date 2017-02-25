@@ -57,7 +57,7 @@ export class ProjectService {
                 return response.json();
             })
             .do((data) => {
-                console.log('Delete Project: ' + JSON.stringify(data))
+                console.log('Delete Project: ' + JSON.stringify(data));
             })
             .catch((err: any) => {
                 return this.handleError(err);
