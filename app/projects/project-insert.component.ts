@@ -41,13 +41,11 @@ export class ProjectInsertComponent {
         return {
             "_id": null,
             "project_name": null,
-            "customer_name": null,
             "start_date": null,
             "end_date": null,
             "details": null,
             "hours": [],
-            "customer_phone": null,
-            "customer_email": null
+            "customer_id": null
         }
     }
 }
