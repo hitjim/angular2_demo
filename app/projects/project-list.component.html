@@ -39,7 +39,7 @@
                             <button class='btn btn-primary' (click)='handleDelete(project)'>Delete</button>
                         </td>
                         <td>{{project.project_name}}</td>
-                        <td>{{project.customer_name}}</td>
+                        <td>{{customerMap[project.customer_id]}}</td>
                         <td>{{project.hours | hours | number}}
                         <td>{{project.start_date | startDate}}</td>
                         <td>{{project.end_date | endDate}}</td>

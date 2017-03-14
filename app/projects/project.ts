@@ -8,4 +8,5 @@ export interface IProject {
     details: string;
     hours: IProjectHour[];
     customer_id: string;
+    customer_name: string;
 }

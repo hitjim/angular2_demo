@@ -5,20 +5,25 @@ import { Router } from '@angular/router';
 import { IProject } from './project';
 import { ProjectService } from './project.service';
 
+import { ICustomer } from '../customers/customer';
+import { CustomerService } from '../customers/customer.service';
 
 @Component({
     templateUrl:'app/projects/project-detail.component.html',
-    providers: [ProjectService]
+    providers: [ProjectService, CustomerService]
 })
 export class ProjectInsertComponent {
 
     pageTitle: string = 'Insert Project';
     project: IProject = this.createNewProject();
     errorMessage: string;
+    customers: ICustomer[];
+
 
     constructor(
         private _route: ActivatedRoute, 
         private _projectService: ProjectService, 
+        private _customerService: CustomerService,
         private _router: Router) {
     }
 
@@ -45,7 +50,14 @@ export class ProjectInsertComponent {
             "end_date": null,
             "details": null,
             "hours": [],
-            "customer_id": null
+            "customer_id": null,
+            "customer_name": null,
         }
+    }
+
+    ngOnInit(): void {
+        this._customerService.getCustomers()
+            .subscribe(customers => this.customers = customers,
+                error => this.errorMessage = <any>error);
     }
 }

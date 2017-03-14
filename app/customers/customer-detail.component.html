@@ -18,6 +18,14 @@
                     <label>Email Address</label>
                     <input class="form-control input-lg" type="text" [(ngModel)] = 'customer.customer_email'/>
                 </div>
+                <div class="form-group">
+                    <label>Projects</label>
+                    <p *ngFor="let project of customerProjects">
+                        {{project.project_name}}</p>
+                    <button class='btn btn-primary' [routerLink]="['/project/insert']">
+                        +
+                    </button>
+                </div>
             </div>
         </div>
     </div>

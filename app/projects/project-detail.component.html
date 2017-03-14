@@ -11,8 +11,13 @@
                     <input class="form-control input-lg" type="text" [(ngModel)] = 'project.project_name'/>
                 </div>
                 <div class="form-group">
-                    <label>Customer</label>
-                    <input class="form-control input-lg" type="text" [(ngModel)] = 'project.customer_name'/>
+                    <label>Select customer</label>
+                    <div>
+                        <select class="btn btn-default dropdown-toggle" type="button" [(ngModel)]="project.customer_id">
+                            <option *ngFor="let customer of customers" [value]="customer._id">
+                                {{customer.customer_name}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Start Date</label>
@@ -21,14 +26,6 @@
                 <div class="form-group">
                     <label>End Date</label>
                     <input class="form-control input-lg" type="date" [(ngModel)] = 'project.end_date'/>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input class="form-control input-lg" type="text" [(ngModel)] = 'project.customer_phone'/>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input class="form-control input-lg" type="text" [(ngModel)] = 'project.customer_email'/>
                 </div>
             </div>
         </div>
